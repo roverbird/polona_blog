@@ -1,0 +1,6 @@
+<p>Share:
+ <a class="btn btn-default btn-bl" target="_blank" href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink }}">TWITTER</a>
+ <a class="btn btn-default btn-bl" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}">FB</a>
+ <a class="btn btn-default btn-bl" target="_blank" href="https://vkontakte.ru/share.php?url={{ .Permalink }}">VK</a>
+ <!--<a class="btn btn-default btn-bl" target="_blank" href="https://plus.google.com/share?url={{ .Permalink }}">Google+</a>-->
+</p>

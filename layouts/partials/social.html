@@ -1,0 +1,14 @@
+<p class="field is-grouped is-grouped-centered">
+  <a class="button is-black is-rounded" target="_blank" href="https://twitter.com/intent/tweet?text={{ .Title | urlquery }}&url={{ .Permalink | safeURL }}">
+    <span>𝕏</span>
+  </a>&nbsp;&nbsp;
+
+  <a class="button is-link is-rounded" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | safeURL }}">
+    <span>Facebook</span>
+  </a>&nbsp;&nbsp;
+
+  <a class="button is-info is-rounded" target="_blank" href="https://telegram.me/share/url?url={{ .Permalink | safeURL }}&text={{ .Title | urlquery }}">
+    <span>Telegram</span>
+  </a>
+</p>
+

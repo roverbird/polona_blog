@@ -1,0 +1,7 @@
+# .gitignore
+/static/
+/resources/
+/themes/*/exampleSite/
+/data/
+/archetypes/
+

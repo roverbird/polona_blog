@@ -1,0 +1,161 @@
+{{ $baseurl := .Site.BaseURL }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- meta starts -->
+ <meta property="og:type" content="article" />
+ <meta property="og:site_name" content="Sotoff.Shop, Workshop of interestig  ." />
+ <meta property="og:title" content="{{ .Title }}" />
+ <meta itemprop="name" content="{{ .Title }}" />
+ <meta property="og:url" content="{{ .Permalink }}" />
+ <meta property="og:image" content="{{.Site.BaseURL}}/img/{{ if .Params.foto }}{{ .Params.foto }}{{else}}generic.jpg{{ end }}" />
+ <meta itemprop="image" content="{{.Site.BaseURL}}/img/{{ if .Params.foto }}{{ .Params.foto }}{{else}}generic.jpg{{ end }}">
+ <meta property="og:locale" content="en_US" />
+ <meta property="og:locale:alternate" content="en_US" />
+ <meta property="fb:admins" content=" "/>
+<meta property="article:author" content="https://www.facebook.com/sotoff.shop" />
+<meta property="article:publisher" content="https://www.facebook.com/sotoff.shop" />
+ <meta name="twitter:card" content="summary_large_image" />
+ <meta name="twitter:site" content="https://sotoff.shop" />
+ <meta name="twitter:creator" content=" " />
+ <meta name="twitter:image:src" content="{{.Site.BaseURL}}/img/{{ if .Params.foto }}{{ .Params.foto }}{{else}}generic.jpg{{ end }}" />
+ <meta name="twitter:domain" content="{{ .Site.BaseURL}}" />
+{{ if .Description }}
+ <meta property="og:description" content="{{ .Description }}" />
+ <meta name="description" content="{{ .Description }}" />
+ <meta name="DC.Description" content="{{ .Description }}" />
+ <meta name="twitter:description" content="{{ .Description }}" />
+ <meta itemprop="description" content="{{ .Description }}" />
+{{else}}
+ <meta property="og:description" content="Sotoff.Shop. Based on Adriatic, we collect, design and sale streetware outfits and more." />
+ <meta name="description" content="Sotoff.Shop. Based on Adriatic, we collect, design and sale streetware outfits and more." />
+ <meta name="DC.Description" content="Sotoff.Shop. Based on Adriatic, we collect, design and sale streetware outfits and more." />
+ <meta name="twitter:description" content="Sotoff.Shop. Based on Adriatic, we collect, design and sale streetware outfits and more." />
+ <meta itemprop="description" content="Sotoff.Shop. Based on Adriatic, we collect, design and sale streetware outfits and more." />
+{{ end }}
+{{ if .Params.tags }}
+ <meta name="keywords" content="{{ range .Params.tags }}{{ . }}, {{ end }}" />
+ <meta name="DC.Subject" content="{{ range .Params.tags }}{{ . }}, {{ end }}" />
+{{ end }}
+{{ if .Title }}
+ <meta name="DC.Title" content="{{ .Title }}" />
+ <meta name="twitter:title" content="{{ .Title }}" />
+{{else}}
+ <meta name="DC.Title" content="Sotoff.Shop. Based on Adriatic, we collect, design and sale streetware outfits and more." />
+ <meta name="twitter:title" content="Sotoff.Shop. Based on Adriatic, we collect, design and sale streetware outfits and more." />
+{{ end }}
+ <meta name="DC.Creator" content="Sotoff.Shop. Based on Adriatic, we collect, design and sale streetware outfits and more." />
+ <meta itemprop="author" content="Sotoff.Shop. Based on Adriatic, we collect, design and sale streetware outfits and more." />
+ <meta name="DC.Type" content="Text" />
+ <meta name="DC.Format" content="text/html" />
+ <meta name="DC.Language" content="en_US" />
+{{ if isset .Params "dated" }}
+ <meta name="DC.Date" content="{{ .Date.Format "2006-1-2" }}" />
+ <meta itemprop="datePublished" content="{{ .Date.Format "2006-1-2" }}" />
+{{ end }}
+ <meta HTTP-EQUIV="CONTENT-LANGUAGE" CONTENT="en-US" />
+ <link rel="canonical" href="{{ .Permalink }}">
+<!-- favicons -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<!-- meta ends -->
+
+{{ if .Title }}
+    <title>{{ .Title }}</title>
+{{else}}
+    <title>Sotoff.Shop. Based on Adriatic, we collect, design and sale streetware outfits and more.</title>
+{{ end }}
+    <!-- Bootstrap Core CSS -->
+    <link href="https://sotoff.shop/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Snipcart Core CSS -->
+    <link id="snipcart-theme" type="text/css" href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="https://sotoff.shop/css/c.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+{{"    <!--[if lt IE 9]><script src=https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js></script><script src=https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js></script> <![endif]-->" | safeHTML }}
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-47896666-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+
+
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+<nav>
+<div class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+
+        <div class="navbar-header"> <a class="navbar-brand" href='https://sotoff.shop'><img src="https://sotoff.shop/img/newlogo3.svg"></a></a>
+
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="snipcart-summary"><a href="https://sotoff.shop/" class="snipcart-checkout">
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve" width="18px" height="18px">
+<metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
+<g><path d="M945.5,962.2l-40.5-635c-1.2-10.8-10.3-19-21.2-19h-170v-85.1C713.9,105.4,618.5,10,500.8,10s-213.1,95.4-213.1,213.1v85.1H118.8c-10.8,0-20,8.1-21.2,18.9l-44,639.2c-0.7,6,1.2,12.1,5.3,16.6c4,4.5,9.8,7.1,15.9,7.1h850c0.2,0,0.3,0,0.4,0c11.8,0,21.3-9.6,21.3-21.3C946.5,966.4,946.2,964.2,945.5,962.2z M330.3,223.1c0-94.1,76.3-170.5,170.5-170.5c94.1,0,170.5,76.3,170.5,170.5v85.1H330.3V223.1z M98.6,947.4l39.2-596.6h149.9v48.4c-12.7,7.4-21.3,21.1-21.3,36.9c0,23.5,19.1,42.6,42.6,42.6c23.5,0,42.6-19.1,42.6-42.6c0-15.8-8.6-29.5-21.3-36.9v-48.4h340.9v48.4c-12.7,7.4-21.3,21.1-21.3,36.9c0,23.5,19.1,42.6,42.6,42.6c23.5,0,42.6-19.1,42.6-42.6c0-15.8-8.6-29.5-21.3-36.9v-48.4h150.9L901,947.4H98.6L98.6,947.4z"/></g>
+</svg>
+
+
+ <span class="snipcart-total-items">0</span></a>
+            </li>
+
+        </ul>
+
+<button type="button" class="navbar-toggle navbar-right" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span>Menu
+        </button>
+
+        <div class="navbar-collapse collapse navbar-right">
+            <ul class="nav navbar-nav">
+                <li><a href='#'>Home</a>
+                <li><a href='https://sotoff.shop/about-us/'>About Us</a>
+                <li><a href='https://sotoff.shop/tags/agency/'>Agency</a>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</nav>

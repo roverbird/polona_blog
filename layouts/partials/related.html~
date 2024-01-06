@@ -1,0 +1,3 @@
+{{ range first 5 .Site.Pages }}
+<br><a href="{{ .Permalink }}">{{ .Title }} → </a><br>
+{{ end }}

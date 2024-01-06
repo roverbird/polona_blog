@@ -1,0 +1,216 @@
+{{ $baseurl := .Site.BaseURL }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- meta starts -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Frelih." />
+<meta property="og:title" content="{{ .Title }}" />
+<meta itemprop="name" content="{{ .Title }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:image" content="{{.Site.BaseURL}}/img/{{ if .Params.foto }}{{ .Params.foto }}{{else}}generic1.jpg{{ end }}" />
+<meta itemprop="image" content="{{.Site.BaseURL}}/img/{{ if .Params.foto }}{{ .Params.foto }}{{else}}generic1.jpg{{ end }}">
+<meta property="og:locale" content="SI" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="fb:admins" content=" "/>
+<meta property="article:author" content="https://www.facebook.com/polona.frelih.9" />
+<meta property="article:publisher" content="https://www.facebook.com/polona.frelih.9" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="{{.Site.BaseURL}}" />
+<meta name="twitter:creator" content="@PolonaFrelih" />
+<meta name="twitter:creator:id" content="420628258" />
+<meta name="twitter:image:src" content="{{.Site.BaseURL}}/img/{{ if .Params.foto }}{{ .Params.foto }}{{else}}generic1.jpg{{ end }}" />
+<meta name="twitter:domain" content="{{ .Site.BaseURL}}" />
+{{ with .Description }}
+<meta property="og:description" content="{{ . }}" />
+<meta name="description" content="{{ . }}" />
+<meta name="DC.Description" content="{{ . }}" />
+<meta name="twitter:description" content="{{ . }}" />
+<meta itemprop="description" content="{{ . }}" />
+{{ else }}
+<meta property="og:description" content="Polona Frelih. Novice, znanje, geopolitika." />
+<meta name="description" content="Polona Frelih. Novice, znanje, geopolitika." />
+<meta name="DC.Description" content="Polona Frelih. Novice, znanje, geopolitika." />
+<meta name="twitter:description" content="Polona Frelih. Novice, znanje, geopolitika." />
+<meta itemprop="description" content="Polona Frelih. Novice, znanje, geopolitika." />
+{{ end }}
+{{ with .Params.tags }}
+<meta name="keywords" content="{{ range . }}{{ . }}, {{ end }}" />
+<meta name="DC.Subject" content="{{ range . }}{{ . }}, {{ end }}" />
+{{ end }}
+{{ with .Params.geo }}
+  {{ $places := delimit . ", " }}
+  <meta name="geo.placename" content="{{ $places }}" />
+{{ end }}
+{{ with .Title }}
+<meta name="DC.Title" content="{{ . }}" />
+<meta name="twitter:title" content="{{ . }}" />
+{{ else }}
+<meta name="DC.Title" content="Polona Frelih. Novice, znanje, geopolitika." />
+<meta name="twitter:title" content="Polona Frelih. Novice, znanje, geopolitika." />
+{{ end }}
+<meta name="DC.Creator" content="Polona Frelih" />
+<meta itemprop="author" content="Polona Frelih" />
+<meta name="DC.Type" content="Text" />
+<meta name="DC.Format" content="text/html" />
+<meta name="DC.Language" content="SI" />
+{{ with isset .Params "Date" }}
+<meta name="DC.Date" content="{{ .Params.Date }}" />
+<meta itemprop="datePublished" content="{{ .Params.Date }}" />
+{{ end }}
+<meta HTTP-EQUIV="CONTENT-LANGUAGE" CONTENT="en-US" />
+<link rel="canonical" href="{{ .Permalink }}">
+<!-- favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d1b4b4">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- meta ends -->
+{{ if .Title }}
+    <title>{{ .Title }}</title>
+{{else}}
+    <title>Polona Frelih | Frelih.org</title>
+{{ end }}
+    <link rel="stylesheet" href="{{.Site.BaseURL}}/css/bulma.min.css" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital@1&family=Darker+Grotesque:wght@800&display=swap');
+
+.va {
+  display: flex;
+  align-items: center;
+}
+
+html {
+  color: white;
+}
+
+a {
+  color: #3b7adf;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #3b7adf;
+}
+
+hr {
+  background: #24272c;
+}
+
+.title,
+.subtitle {
+  color: white;
+  font-family: 'Crimson+Text', serif;
+  font-style: italic; 
+
+}
+
+.navbar-item {
+  font-family: 'Crimson+Text', serif;
+  font-size: 1.2rem;
+
+}
+
+.blog-posts {
+  min-height: 100vh;
+  background: #191b1f;
+  padding-top: 4rem;
+  padding-bottom: 10rem;
+}
+
+.blog-posts article {
+  padding: 1.5rem;
+}
+
+.blog-posts .post img {
+  border-radius: 6px;
+}
+
+.blog-posts .post .post-category {
+  color: #3b7adf;
+}
+
+.blog-posts .post .post-title {
+  font-size: 2.2rem;
+}
+
+.blog-posts .post {
+  line-height: 1.5rem;
+  letter-spacing: .03rem;
+  font-size: 1.3rem;
+  color: #92a3ab;
+}
+
+.post-excerpt {
+  line-height: 1.5rem;
+  letter-spacing: .03rem;
+  font-size: 1.25rem;
+  font-style: italic;
+  font-family: 'Crimson+Text', serif;
+}
+
+.blog-posts .post .featured .featured-image img {
+  height: 380px;
+}
+
+  .card-content p {
+    padding: 1em; /* Adjust the value as needed */
+    font-size: 1.25rem;
+  }
+
+.dropdown-content {
+  max-height: 13em;
+  overflow: auto;
+}
+
+    ::-webkit-scrollbar{height:10px;width:10px}::-webkit-scrollbar-track{background:#efefef;border-radius:6px}::-webkit-scrollbar-thumb{background:#d5d5d5;border-radius:6px}::-webkit-scrollbar-thumb:hover{background:#c4c4c4}
+
+</style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6E5ZQZBFZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6E5ZQZBFZF');
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": {{ if .IsPage }} "WebPage" {{ else }} "BlogPosting" {{ end }},
+  "headline": "{{ .Title }} | {{.Site.Title}}",
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05-07:00" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" }}",
+  "description": "{{ with .Description }}{{ . }}{{ else }} Polona Frelih. Novice, Znanje. Geopolitika.{{ end }}",
+  "image": "{{ if .Params.foto }}/img/{{ . }}{{ else }}/img/generic1.jpg{{ end }}",
+  "author": {
+    "@type": "Person",
+    "name": "Polona Frelih"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Frelih.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{.Site.BaseURL}}/img/logo.svg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  },
+  "url": "{{ .Permalink }}",
+  "isFamilyFriendly": true,
+  "inLanguage": "SI"
+}
+</script>
+</head>
+<body>

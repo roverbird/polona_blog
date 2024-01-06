@@ -1,0 +1,126 @@
+{{ partial "header.html" . }}
+
+{{ partial "nav.html" . }}
+
+
+<section class="blog-posts">
+    <div class="container">
+
+        <div class="columns is-multiline">
+            {{ $paginator := .Paginate (first 100 .Site.Taxonomies.source.nedelo) }}
+            {{ range $paginator.Pages }}
+                {{ .Render "summary2"}}
+            {{ end }}
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h2>{{ partial "pagination.html" $paginator }}</h2>
+            </div>
+        </div>
+
+        <hr>
+
+        <h3 class="title post-title"><a href='/author/frelih-polona/'>Vse Objave</a></h3>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="column is-12">
+
+                    {{ $varTaxonomy := "source" }}
+                    {{ with index .Site.Taxonomies $varTaxonomy }}
+                        <h3 class="heading post-category">{{ $varTaxonomy | humanize | title}}</h3>
+                        {{ range $name, $taxonomy := . }}
+                            <span class="tag is-small">{{ $taxonomy.Count }}</span>
+                            <a href="/{{ $varTaxonomy | urlize }}/{{ $name | urlize }}/">{{ $name | humanize | title }}</a>
+                        {{ end }}
+                    {{ end }}
+
+                    <br><br>
+
+                    {{ $varTaxonomy := "sekcija" }}
+                    {{ with index .Site.Taxonomies $varTaxonomy }}
+                        <h3 class="heading post-category">{{ $varTaxonomy | humanize | title }}</h3>
+                        {{ range $name, $taxonomy := . }}
+                            {{ if ge $taxonomy.Count 3 }}
+                            <span class="tag is-small">{{ $taxonomy.Count }}</span>
+                            <a href="/{{ $varTaxonomy | urlize }}/{{ $name | urlize }}/">{{ $name | humanize | title }}</a>
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+
+                    <br><br>
+
+                    {{ $varTaxonomy := "osebe" }}
+                    {{ with index .Site.Taxonomies $varTaxonomy }}
+                        <h3 class="heading post-category">{{ $varTaxonomy | humanize | title }}</h3>
+                        {{ range $name, $taxonomy := . }}
+                            {{ if ge $taxonomy.Count 2 }}
+                                <span class="tag is-small">{{ $taxonomy.Count }}</span>
+                                <a href="/{{ $varTaxonomy | urlize }}/{{ $name | urlize }}/">{{ $name | humanize | title }}</a>
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+
+                    <br><br>
+
+                    {{ $varTaxonomy := "geo" }}
+                    {{ with index .Site.Taxonomies $varTaxonomy }}
+                        <h3 class="heading post-category">{{ $varTaxonomy | humanize | title }}</h3>
+                        {{ range $name, $taxonomy := . }}
+                            {{ if ge $taxonomy.Count 3 }}
+                                <span class="tag is-small">{{ $taxonomy.Count }}</span>
+                                <a href="/{{ $varTaxonomy | urlize }}/{{ $name | urlize }}/">{{ $name | humanize | title }}</a>
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+
+                    <br><br>
+
+                    {{ $varTaxonomy := "tags" }}
+                    {{ with index .Site.Taxonomies $varTaxonomy }}
+                        <h3 class="heading post-category">{{ $varTaxonomy | humanize | title }}</h3>
+                        {{ range $name, $taxonomy := . }}
+                            {{ if ge $taxonomy.Count 13 }}
+                                <span class="tag is-small">{{ $taxonomy.Count }}</span>
+                                <a href="/{{ $varTaxonomy | urlize }}/{{ $name | urlize }}/">{{ $name | humanize | title }}</a>
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+
+                    <br><br>
+
+                    {{ $varTaxonomy := "leto" }}
+                    {{ with index .Site.Taxonomies $varTaxonomy }}
+                        <h3 class="heading post-category">{{ $varTaxonomy | humanize | title }}</h3>
+                        {{ range $name, $taxonomy := . }}
+                            <span class="tag is-small">{{ $taxonomy.Count }}</span>
+                            <a href="/{{ $varTaxonomy | urlize }}/{{ $name | urlize }}/">{{ $name }}</a>
+                        {{ end }}
+                    {{ end }}
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- all materials
+        <div class="columns is-multiline">
+            {{ range $paginator.Pages }}
+                {{ .Render "summary2"}}
+            {{ end }}
+        </div> --->
+
+        <!-- pagination for all materials
+        <div class="card">
+            <div class="card-content">
+                <h2>{{ partial "pagination.html" $paginator }}</h2>
+            </div>
+        </div> --->
+
+    </div>
+</div>
+</section>
+
+{{ partial "footer.html" . }}
+

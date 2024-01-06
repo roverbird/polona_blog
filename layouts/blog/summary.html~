@@ -1,0 +1,9 @@
+        <div class="col-md-4 col-sm-6">
+            <br><a href="{{ .Permalink }}"><img class="img-responsive" src="https://sotoff.shop/img/{{ .Params.foto }}" /></a>
+            <h4 class="boxx"><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+            <p>{{ .Params.price }} EUR</p>
+            <p><a href="{{ .Permalink }}">{{ .Params.description }}</a></p>
+
+
+        </div>
+

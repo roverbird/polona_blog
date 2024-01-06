@@ -1,0 +1,46 @@
+<section class="hero is-small is-white">
+  <div class="hero-head">
+    <div class="container">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a href="https://frelih.org" class="navbar-item">
+            <b><i>Frelih</i></b>
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenu" class="navbar-menu has-shadow">
+          <div class="navbar-end">
+{{ range .Site.Taxonomies.sekcija.pomembno.Pages }}<a href="{{ .Permalink }}" class="navbar-item is-size-6">{{ .Title | humanize | title }}</a>{{ end }}
+{{ $varTaxonomy := "source" }}{{ with index .Site.Taxonomies $varTaxonomy }}{{ range $name, $taxonomy := . }}{{ if gt (len $taxonomy.Pages) 20 }}
+<a href="/{{ $varTaxonomy | urlize }}/{{ $name | urlize }}/" class="navbar-item is-size-6">{{ $name | humanize | title }}</a>
+{{ end }}{{ end }}{{ end }}
+{{ $varTaxonomy := "sekcija" }}{{ with index .Site.Taxonomies $varTaxonomy }}{{ range $name, $taxonomy := . }}{{ if gt (len $taxonomy.Pages) 50 }}
+<a href="/{{ $varTaxonomy | urlize }}/{{ $name | urlize }}/" class="navbar-item is-size-6">{{ $name | humanize | title }}</a>
+{{ end }}{{ end }}{{ end }}
+            <div class="navbar-item has-dropdown is-hoverable is-size-6">
+              <a class="navbar-link">
+                Geo
+              </a>
+              <div class="navbar-dropdown dropdown-content">
+                {{ range $name, $taxonomy := .Site.Taxonomies.geo }}{{ if gt (len $taxonomy.Pages) 5 }}
+                <a href="{{ range first 1 $taxonomy.Pages.ByTitle }}{{ .Permalink }}{{ end }}" class="navbar-item">{{ $name | humanize | title }}</a>
+                {{ end }}{{ end }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="hero-body">
+    <div class="container">
+      <img src="https://frelih.org/img/logopolonabw.svg" width="249" height="170"  alt="Logo">
+    </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,6 @@
+{{ $taxonomyName := . }}
+
+{{ range $name, $taxonomy := index .Site.Taxonomies $taxonomyName }}
+    <li class="nav-item"><a class="nav-link" href="{{ range first 1 $taxonomy.Pages.ByTitle }}{{ .Permalink }}{{ end }}">{{ $name | humanize }}</a></li>
+{{ end }}
+

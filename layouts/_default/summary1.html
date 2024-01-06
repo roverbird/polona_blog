@@ -1,0 +1,33 @@
+                <div class="card">
+                <div class="card-content">
+                    {{ range first 1 .Site.Taxonomies.source.nedelo }}
+                        <article class="columns featured">
+
+                                <div>
+                                    <h3 class="heading post-category">{{ range .Params.source }} {{ . }}{{ end }} / {{ range .Params.sekcija }} {{ . }}{{ end }}</h3>
+                                    <h1 class="title post-title"><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></h1>
+                                    <p class="post-excerpt">{{ .Page.Description | plainify }}</p>
+                                </div>
+
+                        </article>
+                  {{ end }}
+                  </div>
+                </div>
+
+
+                <hr>
+
+                    <div class="column is-6">
+                        <div class="card">
+                            <div class="card-content">
+                                <h3 class="heading post-category">
+                                    <small>Vir:</small> {{ range .Params.source }} {{ . }}{{ end }} / {{ range .Params.sekcija }} {{ . }}{{ end }}
+                                </h3>
+                                <h1 class="title post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+                                <h4 class="heading post-category"><small>Tema:</small> {{ range first 5 .Params.tags }} {{ . | upper }} {{ end }} / {{ range .Params.geo }} {{ . | upper }}{{ end }}</h4>
+                                <p class="post-excerpt">{{ .Description | plainify | truncate 600 }}</p>
+                                {{ if .Params.osebe }}<h3 class="heading post-category"><small>Osebe:</small> {{ range .Params.osebe }} {{ . }} {{ end }} {{ end }}</h3>
+                            </div>
+                        </div>
+                    </div>
+

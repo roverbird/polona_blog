@@ -1,0 +1,56 @@
+baseURL = "https://frelih.org"
+languageCode = "si"
+defaultContentLanguage = "si"  # Match this with the language code in [Languages.si]
+
+title = "Polona Frelih. Novice, znanje, geopolitika."
+#theme = "your_theme_name"  # Replace with your actual theme name
+
+contentdir = "content"
+staticdir = "static"
+publishDir = "/var/www/polona"
+layoutdir = "layouts"
+builddrafts = false
+canonifyurls = true
+paginate = 10
+paginatePath = "page"
+
+[taxonomies]
+   tag = "tags"
+   category = "categories"
+   author = "author"
+   geo = "geo"
+   izdaja = "izdaja"
+   sekcija = "sekcija"
+   source = "source"
+   osebe = "osebe"
+   leto = "leto"
+
+[blackfriday]
+  fractions = false
+  plainIdAnchors = true
+  angledQuotes = true
+
+disableLanguages = ["si"]
+
+[Languages]
+  [Languages.si]
+    languageName = "Slovene"
+    disabled = false
+
+
+#    [Languages.si.params]
+#      description = "Opis vaše spletne strani"
+
+# Add any additional parameters you need for your site[minify]
+
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = true  # Disable JavaScript minification
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+  minifyOutput = false  # Keep the entire output unminified
+
+
+

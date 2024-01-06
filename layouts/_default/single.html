@@ -1,0 +1,83 @@
+{{ partial "header.html" . }}
+{{ partial "nav.html" . }}
+<section class="blog-posts">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-12 ml-2">
+        <h1 class="title post-title">{{ .Title }}</h1>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column is-8">
+{{ with .Params.Description }}
+  <div class="card">
+    <div class="card-content">
+      <p class="post-excerpt">{{ . }}</p>
+    </div>
+  </div>
+{{ else }}<div class="card">
+      <div class="card-content">
+        <p class="post-excerpt">{{ .Summary }}...</p>
+      </div>
+    </div>{{ end }}
+  {{ with .Params.foto }}
+    <img src="/img/{{ . }}" class="image is-16by9 p-0 my-1" />
+  {{ else }}<br>{{ end }}
+        <div class="card">
+          <div class="card-content">
+          <!--  {{ with .Params.sekcija }}{{ range . }}&nbsp;<a class="tag is-black is-outlined" href="/sekcija/{{ lower . | urlize }}/">{{ . }}</a>{{ end }}{{ end }} --->
+           &nbsp<a href="https://twitter.com/PolonaFrelih?ref_src=twsrc%5Etfw" data-size="large" class="twitter-follow-button" data-show-count="false">Follow @PolonaFrelih</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+           {{ .Content | safeHTML}}
+            <span class="tag is-light is-outlined">{{ .Date.Format "2/1/2006" }}</span>
+          </div>
+        </div>
+        <br>
+        <div class="card">
+          <div class="card-content">
+            {{ partial "social.html" . }}
+          </div>
+        </div>
+        <br>
+        <div class="card">
+          <div class="card-content">
+        {{ $categories := .Params.tags }}{{ range .Site.RegularPages }}{{ $has_common_categories := intersect $categories .Params.tags | len | lt 2 }}{{ if and $has_common_categories (ne $.Permalink .Permalink) }}
+                <h3 class="heading post-category"><small>Povezano: </small>{{ with .Params.osebe }}{{ range . }}{{ . }} {{ end }}{{ end }} {{ with .Params.geo }}{{ range . }}{{ . }} {{ end }}{{ end }}</h3>
+                <h3 class="subtitle"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <br>{{ end }}{{ end }}
+         <div class="has-text-centered">
+            {{ with .PrevPage }}<a href="{{ .RelPermalink }}" class="pagination-previous button is-rounded">&larr; Predhodna</a>{{ end }}
+            {{ with .NextPage }}<a href="{{ .RelPermalink }}"class="pagination-next button is-rounded">Naslednja &rarr;</a>{{ end }}
+        </div>
+        </div>
+        </div>
+      </div>
+      <div class="column is-4">
+        <div class="card">
+          <div class="card-content">
+            {{ with .Params.tags }}<h3 class="heading post-category"><small>Tags: </small>{{ range . }}<a href="/tags/{{ lower . | urlize }}/">{{ . | upper }}</a> {{ end }}
+            </h3>{{ end }}{{ with .Params.geo }}
+              <h3 class="heading post-category"><small>Geo: </small>
+                {{ range . }}<a href="/geo/{{ lower . | urlize }}/">{{ . }}</a>{{ end }}
+              </h3>{{ end }}{{ with .Params.osebe }}
+              <h3 class="heading post-category"><small>Osebe:</small>
+                {{ range . }}<a href="/osebe/{{ lower . | urlize }}/">{{ . }} </a>{{ end }}
+              </h3>{{ end }}{{ with .Params.author }}
+              <h3 class="heading post-category"><small>Avtor: </small>
+                {{ range . }}<a href="/author/{{ lower . | urlize }}/">{{ . }}</a>{{ end }}
+              </h3>{{ end }}{{ with .Params.source }}
+              <h3 class="heading post-category"><small>Vir: </small>
+                {{ range . }}<a href="/source/{{ lower . | urlize }}/">{{ . }}</a>{{ end }}{{ end }}
+                {{ with .Params.sekcija }}{{ range . }}/ <a href="/sekcija/{{ lower . | urlize }}/">{{ . }}</a>{{ end }}
+              </h3>{{ end }}{{ with .Params.leto }}
+              <h3 class="heading post-category"><small>Leto: </small>
+                {{ range . }}<a href="/leto/{{ lower . | urlize }}/">{{ . }}</a>{{ end }}
+              </h3>{{ end }}
+          </div>
+        </div>
+<br>
+      </div>
+    </div>
+  </div>
+</section>
+{{ partial "footer.html" . }}
+

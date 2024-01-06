@@ -1,0 +1,31 @@
+{{ $baseurl := .Site.BaseURL }}
+
+{{ partial "header.html" . }}
+
+{{ partial "nav.html" . }}
+
+{{ $paginator := .Paginate .Data.Pages }}
+
+<section class="blog-posts">
+  <div class="container">
+    {{ $paginator := .Paginate .Data.Pages }}
+
+    <div class="columns is-multiline">
+      {{ range $paginator.Pages }}
+
+          {{ .Render "summary"}}
+
+      {{ end }}
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        {{ partial "pagination.html" $paginator }}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{{ partial "footer.html" . }}
+

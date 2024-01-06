@@ -1,0 +1,48 @@
+{{ partial "header.html" . }}
+
+<style>
+@media(min-width:768px) {
+    .navbar-custom {
+        padding: 0px 0;
+        background-color: white;}
+}
+</style>
+
+<br>
+
+
+<section id="cards" class="container content-section">
+
+<div class="row">
+<div class="col-md-8">
+<img class="img-responsive" src="https://sotoff.shop/img/{{ .Params.foto }}" />
+<p>{{ .Params.fototitle }}</p><p>{{ .Date.Format "2/1/2006" }}</p>
+</div>
+<div class="col-md-4">
+<br>
+<h2>{{.Description}}</h2>
+{{ range .Params.tags }}<a href="https://sotoff.shop/tags/{{ lower . | urlize }}/"><h4>#{{ upper . }}</h4></a> {{ end }}
+{{ partial "related.html" . }}
+
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-8">
+
+<h1>{{.Title}}</h1>
+
+{{.Content}}
+{{ partial "social.html" . }}
+</div>
+<div class="col-md-4">
+{{ range .Params.tags }}<a href="https://sotoff.shop/tags/{{ lower . | urlize }}/"><h4>#{{ upper . }}</h4></a> {{ end }}
+{{ $categories := .Params.tags }}{{ range after 5 (first 30 .Site.Pages)}}{{ $has_common_categories := intersect $categories .Params.tags | len | lt 1 }} {{ if and $has_common_categories (ne $.Permalink .Permalink) }}<br><h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>{{ end }}{{ end }}
+
+</div>
+</div>
+
+</section>
+
+
+{{ partial "footer.html" . }}
