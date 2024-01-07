@@ -16,19 +16,13 @@
           <div class="navbar-end">
 {{ range .Site.Taxonomies.sekcija.pomembno.Pages }}<a href="{{ .Permalink }}" class="navbar-item is-size-6">{{ .Title | humanize | title }}</a>{{ end }}
 {{ $varTaxonomy := "source" }}{{ with index .Site.Taxonomies $varTaxonomy }}{{ range $name, $taxonomy := . }}{{ if gt (len $taxonomy.Pages) 20 }}
-<a href="/{{ $varTaxonomy | urlize }}/{{ $name | urlize }}/" class="navbar-item is-size-6">{{ $name | humanize | title }}</a>
-{{ end }}{{ end }}{{ end }}
+<a href="/{{ $varTaxonomy | urlize }}/{{ $name | urlize }}/" class="navbar-item is-size-6">{{ $name | humanize | title }}</a>{{ end }}{{ end }}{{ end }}
 {{ $varTaxonomy := "sekcija" }}{{ with index .Site.Taxonomies $varTaxonomy }}{{ range $name, $taxonomy := . }}{{ if gt (len $taxonomy.Pages) 50 }}
-<a href="/{{ $varTaxonomy | urlize }}/{{ $name | urlize }}/" class="navbar-item is-size-6">{{ $name | humanize | title }}</a>
-{{ end }}{{ end }}{{ end }}
+<a href="/{{ $varTaxonomy | urlize }}/{{ $name | urlize }}/" class="navbar-item is-size-6">{{ $name | humanize | title }}</a>{{ end }}{{ end }}{{ end }}
             <div class="navbar-item has-dropdown is-hoverable is-size-6">
-              <a class="navbar-link">
-                Geo
-              </a>
+              <a class="navbar-link">Geo</a>
               <div class="navbar-dropdown dropdown-content">
-                {{ range $name, $taxonomy := .Site.Taxonomies.geo }}{{ if gt (len $taxonomy.Pages) 5 }}
-                <a href="{{ range first 1 $taxonomy.Pages.ByTitle }}{{ .Permalink }}{{ end }}" class="navbar-item">{{ $name | humanize | title }}</a>
-                {{ end }}{{ end }}
+                {{ range $name, $taxonomy := .Site.Taxonomies.geo }}{{ if gt (len $taxonomy.Pages) 5 }}<a href="{{ range first 1 $taxonomy.Pages.ByTitle }}{{ .Permalink }}{{ end }}" class="navbar-item">{{ $name | humanize | title }}</a>{{ end }}{{ end }}
               </div>
             </div>
           </div>

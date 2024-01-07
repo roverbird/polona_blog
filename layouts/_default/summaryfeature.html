@@ -1,4 +1,5 @@
                     <div class="column is-6">
+    {{ if .Params.foto }}<img src="https://frelih.org/img/{{ .Params.foto }}" class="image is-16by9 p-0 my-1" />{{ end }}
                         <div class="card">
                             <div class="card-content">
                                 <h3 class="heading post-category">
@@ -8,6 +9,7 @@
 <h3 class="heading post-category">
   <small>Tema:</small> {{ with .Params.tags }}{{ if gt (len .) 0 }} {{ range first 5 . }} {{ . | upper }} {{ end }} {{ end }} {{ end }} / {{ range .Params.geo }} {{ . | upper }}{{ end }}
 </h3>
+
                                 <p class="post-excerpt">{{ .Description | plainify | truncate 600 }}</p>
                                 {{ if .Params.osebe }}<h3 class="heading post-category"><small>Osebe:</small> {{ range .Params.osebe }} {{ . }} {{ end }} {{ end }}</h3>
                             </div>

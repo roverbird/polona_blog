@@ -7,7 +7,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- meta starts -->
 <meta property="og:type" content="article" />
-<meta property="og:site_name" content="Frelih." />
+<meta property="og:site_name" content="Polona Frelih." />
 <meta property="og:title" content="{{ .Title }}" />
 <meta itemprop="name" content="{{ .Title }}" />
 <meta property="og:url" content="{{ .Permalink }}" />
@@ -40,12 +40,9 @@
 {{ with .Params.tags }}
 <meta name="keywords" content="{{ range . }}{{ . }}, {{ end }}" />
 <meta name="DC.Subject" content="{{ range . }}{{ . }}, {{ end }}" />
-{{ end }}
-{{ with .Params.geo }}
-  {{ $places := delimit . ", " }}
+{{ end }}{{ with .Params.geo }}{{ $places := delimit . ", " }}
   <meta name="geo.placename" content="{{ $places }}" />
-{{ end }}
-{{ with .Title }}
+{{ end }}{{ with .Title }}
 <meta name="DC.Title" content="{{ . }}" />
 <meta name="twitter:title" content="{{ . }}" />
 {{ else }}
@@ -85,68 +82,53 @@
   display: flex;
   align-items: center;
 }
-
 html {
   color: white;
 }
-
 a {
   color: #3b7adf;
 }
-
 a:hover {
   text-decoration: underline;
   color: #3b7adf;
 }
-
 hr {
-  background: #24272c;
+  background: #ffffff;
 }
-
 .title,
 .subtitle {
   color: white;
   font-family: 'Crimson+Text', serif;
   font-style: italic; 
-
 }
-
 .navbar-item {
   font-family: 'Crimson+Text', serif;
   font-size: 1.2rem;
-
 }
-
 .blog-posts {
   min-height: 100vh;
   background: #191b1f;
   padding-top: 4rem;
   padding-bottom: 10rem;
 }
-
 .blog-posts article {
   padding: 1.5rem;
 }
-
 .blog-posts .post img {
   border-radius: 6px;
 }
-
 .blog-posts .post .post-category {
   color: #3b7adf;
 }
-
 .blog-posts .post .post-title {
   font-size: 2.2rem;
 }
-
 .blog-posts .post {
   line-height: 1.5rem;
   letter-spacing: .03rem;
   font-size: 1.3rem;
   color: #92a3ab;
 }
-
 .post-excerpt {
   line-height: 1.5rem;
   letter-spacing: .03rem;
@@ -154,21 +136,17 @@ hr {
   font-style: italic;
   font-family: 'Crimson+Text', serif;
 }
-
 .blog-posts .post .featured .featured-image img {
   height: 380px;
 }
-
   .card-content p {
     padding: 1em; /* Adjust the value as needed */
     font-size: 1.25rem;
   }
-
 .dropdown-content {
   max-height: 13em;
   overflow: auto;
 }
-
     ::-webkit-scrollbar{height:10px;width:10px}::-webkit-scrollbar-track{background:#efefef;border-radius:6px}::-webkit-scrollbar-thumb{background:#d5d5d5;border-radius:6px}::-webkit-scrollbar-thumb:hover{background:#c4c4c4}
 
 </style>

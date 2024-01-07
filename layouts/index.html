@@ -1,28 +1,19 @@
 {{ partial "header.html" . }}
-
 {{ partial "nav.html" . }}
-
-
 <section class="blog-posts">
     <div class="container">
-
-        <div class="columns is-multiline">
-            {{ $paginator := .Paginate (first 100 .Site.Taxonomies.source.nedelo) }}
-            {{ range $paginator.Pages }}
-                {{ .Render "summary2"}}
-            {{ end }}
+        <div class="columns is-multiline">{{ range first 2 .Site.Taxonomies.sekcija.pomembno }}{{ .Render "summaryfeature"}}{{ end }}
         </div>
-
+        <hr>
+        <div class="columns is-multiline">{{ $paginator := .Paginate (first 100 .Site.Taxonomies.source.nedelo) }}{{ range $paginator.Pages }}{{ .Render "summary2"}}{{ end }}
+        </div>
         <div class="card">
             <div class="card-content">
                 <h2>{{ partial "pagination.html" $paginator }}</h2>
             </div>
         </div>
-
         <hr>
-
-        <h3 class="title post-title"><a href='/author/frelih-polona/'>Vse Objave</a></h3>
-
+        <h3 class="title post-title"><a href='http://frelih.org/author/frelih-polona/'>Vse Objave</a></h3>
         <div class="card">
             <div class="card-content">
                 <div class="column is-12">
@@ -35,9 +26,7 @@
                             <a href="/{{ $varTaxonomy | urlize }}/{{ $name | urlize }}/">{{ $name | humanize | title }}</a>
                         {{ end }}
                     {{ end }}
-
                     <br><br>
-
                     {{ $varTaxonomy := "sekcija" }}
                     {{ with index .Site.Taxonomies $varTaxonomy }}
                         <h3 class="heading post-category">{{ $varTaxonomy | humanize | title }}</h3>
@@ -48,9 +37,7 @@
                             {{ end }}
                         {{ end }}
                     {{ end }}
-
                     <br><br>
-
                     {{ $varTaxonomy := "osebe" }}
                     {{ with index .Site.Taxonomies $varTaxonomy }}
                         <h3 class="heading post-category">{{ $varTaxonomy | humanize | title }}</h3>
@@ -61,9 +48,7 @@
                             {{ end }}
                         {{ end }}
                     {{ end }}
-
                     <br><br>
-
                     {{ $varTaxonomy := "geo" }}
                     {{ with index .Site.Taxonomies $varTaxonomy }}
                         <h3 class="heading post-category">{{ $varTaxonomy | humanize | title }}</h3>
@@ -74,9 +59,7 @@
                             {{ end }}
                         {{ end }}
                     {{ end }}
-
                     <br><br>
-
                     {{ $varTaxonomy := "tags" }}
                     {{ with index .Site.Taxonomies $varTaxonomy }}
                         <h3 class="heading post-category">{{ $varTaxonomy | humanize | title }}</h3>
@@ -87,9 +70,7 @@
                             {{ end }}
                         {{ end }}
                     {{ end }}
-
                     <br><br>
-
                     {{ $varTaxonomy := "leto" }}
                     {{ with index .Site.Taxonomies $varTaxonomy }}
                         <h3 class="heading post-category">{{ $varTaxonomy | humanize | title }}</h3>
@@ -102,21 +83,6 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- all materials
-        <div class="columns is-multiline">
-            {{ range $paginator.Pages }}
-                {{ .Render "summary2"}}
-            {{ end }}
-        </div> --->
-
-        <!-- pagination for all materials
-        <div class="card">
-            <div class="card-content">
-                <h2>{{ partial "pagination.html" $paginator }}</h2>
-            </div>
-        </div> --->
 
     </div>
 </div>
